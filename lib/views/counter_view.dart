@@ -12,7 +12,8 @@ class CounterView extends StatefulWidget {
 class _CounterViewState extends State<CounterView> {
   @override
   Widget build(BuildContext context) {
-    final counterController = Provider.of<CounterController>(context);
+    final counterController =
+        Provider.of<CounterController>(context, listen:true);
     return Scaffold(
       appBar: AppBar(
         title: const Text("Counter App"),
