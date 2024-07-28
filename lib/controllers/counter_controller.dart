@@ -1,15 +1,18 @@
 import 'package:counter_app_mvc/models/counter_model.dart';
+import 'package:flutter/material.dart';
 
-class CounterController {
-  static int get count => CounterModel.count;
+class CounterController extends ChangeNotifier {
+  int get count => CounterModel.count;
 
-  static void increment() {
+  void increment() {
     CounterModel.increament();
+    notifyListeners();
   }
 
-  static void decrement() {
-    if (CounterController.count > 0) {
+  void decrement() {
+    if (count > 0) {
       CounterModel.decreament();
+      notifyListeners();
     }
   }
 }

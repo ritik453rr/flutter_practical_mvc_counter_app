@@ -1,5 +1,8 @@
+import 'package:counter_app_mvc/controllers/counter_controller.dart';
+import 'package:counter_app_mvc/models/counter_model.dart';
 import 'package:counter_app_mvc/views/counter_view.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 void main() {
   runApp(const MyApp());
@@ -9,9 +12,12 @@ class MyApp extends StatelessWidget {
   const MyApp({super.key});
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: CounterView(),
+    return  MultiProvider(
+      providers: [ChangeNotifierProvider(create: (context)=>CounterController())],
+      child: const MaterialApp(
+        debugShowCheckedModeBanner: false,
+        home: CounterView(),
+      ),
     );
   }
 }

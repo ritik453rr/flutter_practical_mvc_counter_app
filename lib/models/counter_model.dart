@@ -4,12 +4,11 @@ class CounterModel {
   //getter
   static int get count => _counter;
 
- static void increament() {
+  static void increament() {
     _counter++;
   }
 
   static void decreament() {
     _counter--;
   }
-
 }

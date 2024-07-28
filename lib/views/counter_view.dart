@@ -1,6 +1,6 @@
 import 'package:counter_app_mvc/controllers/counter_controller.dart';
-import 'package:counter_app_mvc/models/counter_model.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class CounterView extends StatefulWidget {
   const CounterView({super.key});
@@ -12,6 +12,7 @@ class CounterView extends StatefulWidget {
 class _CounterViewState extends State<CounterView> {
   @override
   Widget build(BuildContext context) {
+    final counterController = Provider.of<CounterController>(context);
     return Scaffold(
       appBar: AppBar(
         title: const Text("Counter App"),
@@ -26,7 +27,7 @@ class _CounterViewState extends State<CounterView> {
             style: TextStyle(fontSize: 28.0),
           ),
           Text(
-            CounterController.count.toString(),
+            counterController.count.toString(),
             style: const TextStyle(fontSize: 30),
           ),
           const SizedBox(height: 16.0),
@@ -35,8 +36,7 @@ class _CounterViewState extends State<CounterView> {
             children: [
               FloatingActionButton(
                 onPressed: () {
-                  CounterController.increment();
-                  setState(() {});
+                  counterController.increment();
                 },
                 child: const Icon(Icons.add),
               ),
@@ -45,8 +45,7 @@ class _CounterViewState extends State<CounterView> {
               ),
               FloatingActionButton(
                 onPressed: () {
-                  CounterController.decrement();
-                  setState(() {});
+                  counterController.decrement();
                 },
                 child: const Icon(Icons.remove),
               ),
